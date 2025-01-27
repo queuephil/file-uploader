@@ -1,0 +1,111 @@
+/* standards ________________________________________________________________*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: none;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+
+  /* border: 1px solid red; */
+}
+:root {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  --background-color: rgb(33, 33, 33);
+  --color: rgb(222, 222, 222);
+  --color050: rgba(222, 222, 222, 0.5);
+
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+/* elements _________________________________________________________________*/
+button {
+  background-color: var(--color);
+  color: var(--background-color);
+  cursor: pointer;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  outline: 1px solid;
+}
+button:hover,
+button:focus {
+  outline: 2px solid;
+}
+
+a {
+  color: var(--color);
+}
+
+.material-symbols-outlined {
+  text-decoration: none;
+  font-size: 32px !important;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxed {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  outline: 1px solid var(--color);
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 3rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  > div > label {
+    display: block;
+    padding: 0 1rem;
+  }
+  > div > input {
+    background-color: transparent;
+    color: var(--color);
+    padding: 0 1rem;
+    outline: 1px solid var(--color);
+    border-radius: 1rem;
+  }
+  > button {
+    margin-top: 1rem;
+  }
+}
+
+.auth {
+  > * {
+    text-decoration: none;
+    font-size: 2rem;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--color050);
+}

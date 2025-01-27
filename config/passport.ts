@@ -4,8 +4,8 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import { Strategy as FacebookStrategy } from 'passport-facebook'
 import { Strategy as GitHubStrategy } from 'passport-github2'
 import bcrypt from 'bcryptjs'
-import queriesAuth from '../prisma/queriesAuth'
 import dotenv from 'dotenv'
+import queriesAuth from '../prisma/queriesAuth'
 
 dotenv.config()
 

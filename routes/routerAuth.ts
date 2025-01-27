@@ -11,6 +11,8 @@ routerAuth.post('/sign-in', controllerAuth.postSignIn)
 
 routerAuth.get('/sign-out', controllerAuth.getSignOut)
 
+routerAuth.get('/account', controllerAuth.getAccount)
+
 // Universal Callback for all following Authentications
 routerAuth.get('/:provider/callback', controllerAuth.getCallback)
 

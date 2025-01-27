@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Account</title>
+  </head>
+  <body>
+    <%- include('../views/partials/header.ejs', { locals }) %>
+    <div class="boxed">
+      <h1>Account</h1>
+      <ul>
+        <li>Email: <%= locals.user.username %></li>
+        <li>
+          Password: <%= locals.user.password ? '**********' : 'not set' %>
+        </li>
+        <li>
+          Google: <%= locals.user.google_id ? 'connected' : 'not connected' %>
+        </li>
+        <li>
+          Facebook: <%= locals.user.facebook_id ? 'connected' : 'not connected'
+          %>
+        </li>
+        <li>
+          Github: <%= locals.user.github_id ? 'connected' : 'not connected' %>
+        </li>
+      </ul>
+      <a href="/auth/sign-out" class="material-symbols-outlined"> Logout </a>
+    </div>
+  </body>
+</html>

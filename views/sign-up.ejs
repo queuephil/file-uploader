@@ -12,7 +12,8 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <div class="sign">
+    <%- include('../views/partials/header.ejs', { locals }) %>
+    <div class="boxed">
       <h1>Sign up for free</h1>
       <a href="/auth/sign-in">Or sign in to your existing account</a>
 
@@ -34,7 +35,6 @@
         <a href="/auth/facebook" class="devicon-facebook-plain"> </a>
         <a href="/auth/github" class="devicon-github-original"> </a>
       </div>
-      <div><a href="/">Back Home</a></div>
     </div>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+/>
+
+<header>
+  <!-- Homepage -->
+  <a href="/" class="material-symbols-outlined"> token </a>
+  <!-- Content -->
+
+  <!-- Auth -->
+  <% if (locals.user) { %>
+  <a href="/auth/account" class="material-symbols-outlined"> face </a><% } %> <%
+  if (!locals.user) { %>
+  <a href="/auth/sign-in" class="material-symbols-outlined"> login </a><% } %>
+</header>

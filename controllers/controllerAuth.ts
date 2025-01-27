@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import passport from 'passport'
 import { Request, Response, NextFunction } from 'express'
 
-const controller = {
+const controllerAuth = {
   getSignUp: (req: Request, res: Response) => res.render('sign-up'),
 
   postSignUp: async (req: Request, res: Response, next: NextFunction) => {
@@ -31,6 +31,10 @@ const controller = {
     })
   },
 
+  getAccount: async (req: Request, res: Response) => {
+    res.render('account', { user: req.user })
+  },
+
   // Universal Callback for all following Authentications
   getCallback: (req: Request, res: Response, next: NextFunction) => {
     const provider = req.params.provider
@@ -56,4 +60,4 @@ const controller = {
   }),
 }
 
-export default controller
+export default controllerAuth
