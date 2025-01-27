@@ -7,6 +7,17 @@
     <title>File Uploader</title>
   </head>
   <body>
-    <%- include('../views/partials/header.ejs', { locals }) %>
+    <%- include('../views/partials/header.ejs', { locals }) %> <%
+    if(locals.user) { %>
+    <form
+      action="/upload"
+      enctype="multipart/form-data"
+      method="post"
+      class="boxed"
+    >
+      <input type="file" name="uploaded_file" />
+      <button type="submit">Upload</button>
+    </form>
+    <% } %>
   </body>
 </html>

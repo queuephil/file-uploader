@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'node:path' // for CSS and Views
 import router from './routes/router' // for Routes
 import routerAuth from './routes/routerAuth' // for Routes
+import routerUpload from './routes/routerUpload' // for Routes
 import expressSession from './config/session' // for Session
 import passport from 'passport' // for Auth
 import './config/passport' // for Auth
@@ -21,6 +22,7 @@ app.use(passport.session()) // for Auth
 
 app.use('/', router) // for routes
 app.use('/auth', routerAuth) // for routes
+app.use('/upload', routerUpload) // for routes
 
 app.set('views', path.join(__dirname, 'views')) // for views
 app.set('view engine', 'ejs') // for views
