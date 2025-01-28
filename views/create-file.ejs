@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <title>Upload File</title>
+  </head>
+  <body>
+    <%- include('../views/partials/header.ejs', { locals }) %> <%
+    if(locals.user) { %>
+    <form
+      action="/files/create-file/<%= user.id %>/<%= parent %>"
+      enctype="multipart/form-data"
+      method="post"
+      class="boxed"
+    >
+      <input type="file" name="uploaded_file" />
+      <button type="submit">Upload</button>
+    </form>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <title>Create Folder</title>
+  </head>
+  <body>
+    <%- include('../views/partials/header.ejs', { locals }) %> <%
+    if(locals.user) { %>
+    <form
+      action="/files/create-folder/<%= user.id %>/<%= parent %>"
+      method="post"
+      class="boxed"
+    >
+      <label for="foldername">Name</label>
+      <input type="text" name="foldername" id="foldername" />
+      <button type="submit">Create Folder</button>
+    </form>
+    <% } %>
+  </body>
+</html>
