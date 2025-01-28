@@ -24,17 +24,17 @@
 }
 
 /* elements _________________________________________________________________*/
-button {
+button,
+input::file-selector-button {
   background-color: var(--color);
   color: var(--background-color);
   cursor: pointer;
   padding: 0 1rem;
   border-radius: 1rem;
-  outline: 1px solid;
-}
-button:hover,
-button:focus {
-  outline: 2px solid;
+  /* &:hover,
+  &:focus {
+    background-color: var(--color);
+  } */
 }
 
 a {
@@ -75,6 +75,39 @@ ul {
   list-style-type: none;
 }
 
+li {
+  padding-left: 2rem;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  > :first-child {
+    width: 30rem;
+  }
+  > a {
+    text-decoration: none;
+    color: orange;
+  }
+  > .actions {
+    display: flex;
+  }
+  > form {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+button.material-symbols-outlined {
+  all: unset;
+  display: inline;
+  font-family: 'Material Symbols Outlined', sans-serif;
+  width: 32px;
+  height: 32px;
+  line-height: 1rem;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -92,6 +125,17 @@ form {
   > button {
     margin-top: 1rem;
   }
+}
+
+input[type='file'] {
+  color: var(--color);
+  outline: 1px solid var(--color);
+  border-radius: 1rem;
+}
+
+input::file-selector-button {
+  border: none;
+  height: 24px;
 }
 
 .auth {

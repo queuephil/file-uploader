@@ -4,20 +4,89 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
     <title>File Uploader</title>
   </head>
   <body>
-    <%- include('../views/partials/header.ejs', { locals }) %> <%
-    if(locals.user) { %>
-    <form
-      action="/upload"
-      enctype="multipart/form-data"
-      method="post"
-      class="boxed"
+    <!-- header -->
+    <%- include('../views/partials/header.ejs', { locals }) %>
+
+    <!-- folders and files -->
+    <% function renderFolder(folders) { %> <% if (!folders || folders.length ===
+    0) { %>
+    <a
+      href="/files/create-folder/<%= locals.user.id %>/"
+      class="material-symbols-outlined"
     >
-      <input type="file" name="uploaded_file" />
-      <button type="submit">Upload</button>
-    </form>
+      create_new_folder
+    </a>
+    <% return; %> <% } %>
+
+    <ul>
+      <% folders.forEach(folder => { %>
+      <li>
+        <!-- folder name -->
+        <div class="description">
+          <p><%= folder.name %></p>
+          <div class="actions">
+            <a
+              href="/files/create-file/<%= locals.user.id %>/<%= folder.id %>"
+              class="material-symbols-outlined"
+            >
+              new_window
+            </a>
+            <a
+              href="/files/create-folder/<%= locals.user.id %>/<%= folder.id %>"
+              class="material-symbols-outlined"
+            >
+              create_new_folder
+            </a>
+            <form action="/files/delete-folder/<%= folder.id %>" method="post">
+              <button type="submit" class="material-symbols-outlined">
+                delete
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- recursion for subfolders (before files) -->
+        <% if (folder.subfolders && folder.subfolders.length > 0) { %>
+        <ul>
+          <%- renderFolder(folder.subfolders) %>
+        </ul>
+        <% } %>
+
+        <!-- files within the folder (after subfolders) -->
+        <% if (folder.files && folder.files.length > 0) { %>
+        <ul>
+          <% folder.files.forEach(file => { %>
+          <li>
+            <div class="description">
+              <a href="<%= file.url %>"><%= file.name %></a>
+              <form
+                action="/files/delete-file/<%= file.id %>/<%= file.name %>"
+                method="post"
+              >
+                <button type="submit" class="material-symbols-outlined">
+                  delete
+                </button>
+              </form>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <!-- Render folders if the user is logged in -->
+    <% if (locals.user) { %> <%- renderFolder(folders) %> <% } else { %>
+    <p>Please log in to view your folders.</p>
     <% } %>
   </body>
 </html>
